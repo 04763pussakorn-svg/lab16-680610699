@@ -38,6 +38,7 @@ export function AddCourseDialog() {
   const [courseTitle, setCourseTitle] = useState("");
   const [selected, setSelected] = useState<InstructorOption[]>([]);
   const [query, setQuery] = useState("");
+  const [comboOpen, setComboOpen] = useState(false); 
   const [createdNames, setCreatedNames] = useState<string[]>([]); // ผู้สอนใหม่ที่พิมพ์เพิ่มใน dialog นี้
 
   // ชื่อผู้สอนที่มีอยู่แล้วในทุกวิชา (ไม่ซ้ำกัน) + ที่เพิ่งพิมพ์เพิ่ม
@@ -60,13 +61,14 @@ export function AddCourseDialog() {
     : undefined;
   const canSave = code !== "" && courseTitle.trim() !== "" && !duplicate;
 
-  const reset = () => {
-    setCourseCode("");
-    setCourseTitle("");
-    setSelected([]);
-    setQuery("");
-    setCreatedNames([]);
-  };
+const reset = () => {
+  setCourseCode("");
+  setCourseTitle("");
+  setSelected([]);
+  setQuery("");
+  setCreatedNames([]);
+  setComboOpen(false);
+};
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
@@ -83,6 +85,7 @@ export function AddCourseDialog() {
     }
     setSelected(next);
     setQuery("");
+    setComboOpen(false);
   };
 
   const handleSave = () => {
@@ -138,6 +141,8 @@ export function AddCourseDialog() {
             <Label>ผู้สอน</Label>
             <Combobox
               multiple
+              open={comboOpen}
+              onOpenChange={setComboOpen}
               items={visible}
               filter={null}
               value={selected}

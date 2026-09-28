@@ -87,6 +87,7 @@ export default function AdminEnrollmentsPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [formCourse, setFormCourse] = useState<string | null>(null);
   const [formStudents, setFormStudents] = useState<StudentOption[]>([]);
+  const [comboOpen, setComboOpen] = useState(false);
   const [mode, setMode] = useState<"course" | "student">("course");
   const [filterCourse, setFilterCourse] = useState("all");
   const [filterStudent, setFilterStudent] = useState("all");
@@ -190,7 +191,12 @@ export default function AdminEnrollmentsPage() {
                 multiple
                 items={availableStudents}
                 value={formStudents}
-                onValueChange={(v: StudentOption[]) => setFormStudents(v)}
+                onValueChange={(v: StudentOption[]) => {
+                  setFormStudents(v);
+                  setComboOpen(false); // ปิด popup ไม่ให้ค้างทับปุ่มลงทะเบียน
+                }}
+                open={comboOpen}
+                onOpenChange={setComboOpen}
                 itemToStringLabel={(o: StudentOption) => o.label}
                 isItemEqualToValue={(a: StudentOption, b: StudentOption) =>
                   a.value === b.value
