@@ -1,6 +1,6 @@
 import { BookOpen, Home } from "lucide-react";
 import { Link, useLocation } from "react-router";
-
+import { BookOpen, ClipboardList, Home } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -23,7 +23,12 @@ const ROLE = "ADMIN";
 
 const items = [
   { title: "หน้าแรก", url: "/", icon: Home },
-  { title: "จัดการการลงทะเบียน", url: "/admin/enrollments", icon: BookOpen },
+  { title: "จัดการวิชาเรียน", url: "/admin/courses", icon: BookOpen },
+  {
+    title: "จัดการการลงทะเบียน",
+    url: "/admin/enrollments",
+    icon: ClipboardList,
+  },
 ];
 
 export function AppSidebar() {
