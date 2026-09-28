@@ -14,9 +14,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "admin/enrollments", element: <AdminEnrollmentsPage /> },
-    ],
+  { index: true, element: <HomePage /> },
+  { path: "admin/courses", element: <AdminCoursesPage /> },
+  { path: "admin/enrollments", element: <AdminEnrollmentsPage /> },
+],
   },
 ]);
 
@@ -28,8 +29,3 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>
 );
 
-children: [
-  { index: true, element: <HomePage /> },
-  { path: "admin/courses", element: <AdminCoursesPage /> },
-  { path: "admin/enrollments", element: <AdminEnrollmentsPage /> },
-],

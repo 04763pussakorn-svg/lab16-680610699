@@ -1,4 +1,3 @@
-import { BookOpen, Home } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { BookOpen, ClipboardList, Home } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
